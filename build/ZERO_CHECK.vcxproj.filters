@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\build\CMakeFiles\47477db6b9bd4e234c5077df18c7b8d6\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{48FCB700-CA0F-3C86-8EAA-DB740DD483C8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

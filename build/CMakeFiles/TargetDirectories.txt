@@ -1,0 +1,3 @@
+D:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build/CMakeFiles/kdtree_test.dir
+D:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build/CMakeFiles/ALL_BUILD.dir
+D:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build/CMakeFiles/ZERO_CHECK.dir

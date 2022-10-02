@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{810947D0-D0F7-363B-A4F1-3607DA0E7DA9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
