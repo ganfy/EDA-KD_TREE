@@ -66,7 +66,7 @@ class KDTree {
 
   typename KDTNode*const* find(const Point<N>& pt) const;
   void copyRec(KDTNode*& c, const KDTNode* n);
-  void knn_queryR(const Point<N>& key, size_t k, KDTNode* r, std::priority_queue<std::pair<double, ElemType>>& knn, int& min_dist, int &dim) const;
+  void knn_queryR(const Point<N>& key, size_t k, KDTNode* r, std::priority_queue<std::pair<double, ElemType>>& knn, int& min_dist, int dim) const;
 
 };
 
@@ -126,7 +126,7 @@ typename KDTree<N, ElemType>::KDTNode*const* KDTree<N, ElemType>::find(const Poi
     auto p = &root;
     for (;
         *p && (*p)->v.first != pt;
-        p = &((*p)->children[(*p)->v.first[(d++)%N] < pt[d%N]]) //va cambiando la dimensión
+        p = &((*p)->children[(*p)->v.first[d%N] < pt[d%N]]) , d++ //va cambiando la dimensión
         );
     //return *p != 0;
     return p;
@@ -194,6 +194,7 @@ ElemType KDTree<N, ElemType>::knn_value(const Point<N> &key, size_t k) const {
     ElemType elem = v[0];
     int cuenta = 0;
     for (int i = 1; i < v.size(); i++) {
+        //std::cout << v[i] << " " << k << std::endl;
         if (v[i] == v[i - 1])
             cuenta++;
         else
@@ -208,59 +209,6 @@ ElemType KDTree<N, ElemType>::knn_value(const Point<N> &key, size_t k) const {
 }
 
 template <size_t N, typename ElemType>
-double dist(const Point<N> a, const Point<N> b) {
-    double sum = 0;
-    for (int i = 0; i < a.size(); i++) {
-        sum += pow(a[i] - b[i], 2);
-    }
-    return sqrt(sum);
-}
-
-//template <size_t N, typename ElemType>
-//std::vector<ElemType> KDTree<N, ElemType>::knn_query(const Point<N> &key, size_t k) const {
-//  std::vector<ElemType> values;
-//  double min_dist = 1000000;
-//  int dim = 0;
-//  auto p = &root;
-//  auto q = p;
-//  typedef std::pair<double, ElemType> P;
-//  std::priority_queue<P> knn;
-//  size_t tam = k;
-//  int dir;
-//  while (tam--) {
-//      for (; *p && *q;  p = &((*p)->children[dir])) //va cambiando la dimensión
-//      {
-//          double d = dist<N, ElemType>((*p)->v.first, key);
-//              if (d < min_dist) {
-//                  min_dist = d;
-//                      P aux = { d,(*p)->v.second };
-//                      knn.push(aux);
-//                      while (knn.size() > k) knn.pop();
-//              }
-//              if (p != q) {
-//                  double d = dist<N, ElemType>((*q)->v.first, key);
-//                  if (d < min_dist) {
-//                      min_dist = d;
-//                      P aux = { d,(*p)->v.second };
-//                      knn.push(aux);
-//                      while (knn.size() > k) knn.pop();
-//                  }
-//           }
-//              dir = (*p)->v.first[(dim++) % N] < key[dim % N];
-//              if (fabs((*p)->v.first[(dim) % N] - key[dim % N]) < min_dist) {
-//                  q = &((*q)->children[!dir]);
-//              }
-//              else
-//                  q = p;
-//
-//      }
-//  }
-//  for (int i = 0; i < knn.size(); i++, values.push_back(knn.top().second), knn.pop());
-//  return values;
-//}
-
-
-template <size_t N, typename ElemType>
 std::vector<ElemType> KDTree<N, ElemType>::knn_query(const Point<N>& key, size_t k) const {
     typedef std::pair<double, ElemType> P;
     std::vector<ElemType> values;
@@ -268,27 +216,28 @@ std::vector<ElemType> KDTree<N, ElemType>::knn_query(const Point<N>& key, size_t
     int dim = 0;
     int min_dist = 1000000;
     knn_queryR(key,k,root,knn, min_dist, dim);
-    for (int i = 0; i < knn.size(); i++, values.push_back(knn.top().second), knn.pop());
+    while (!knn.empty()) { values.push_back(knn.top().second); knn.pop(); }
+    //std::cout << "v size: " << values.size() << std::endl;
     return values;
 }
 
 template <size_t N, typename ElemType>
-void KDTree<N, ElemType>::knn_queryR(const Point<N>& key, size_t k, KDTNode* r, std::priority_queue<std::pair<double, ElemType>> &knn, int &min_dist, int &dim) const{
+void KDTree<N, ElemType>::knn_queryR(const Point<N>& key, size_t k, KDTNode* r, std::priority_queue<std::pair<double, ElemType>> &knn, int &min_dist, int dim) const{
     typedef std::pair<double, ElemType> P;
     if (r != 0) {
         auto p = &r;
-        double d = dist<N, ElemType>((*p)->v.first, key);
-        if (d < min_dist) {
+        double d = distance((*p)->v.first, key); //std::cout << d << std::endl;
+        if (d < min_dist) 
             min_dist = d;
-            P aux = { d,(*p)->v.second };
-            knn.push(aux);
-            while (knn.size() > k) knn.pop();
-         }
-        int dir = (*p)->v.first[(dim++) % N] < key[dim % N];
-        knn_queryR(key, k, (*p)->children[dir], knn, min_dist, dim);
+        P aux = { d,(*p)->v.second };
+        knn.push(aux);
+        while (knn.size() > k) knn.pop();
+         
+        int dir = (*p)->v.first[dim % N] < key[dim % N];
+        knn_queryR(key, k, (*p)->children[dir], knn, min_dist, dim+1);
 
-        if (fabs((*p)->v.first[dim % N] - key[dim % N]) < min_dist){
-          knn_queryR(key, k, (*p)->children[!dir], knn, min_dist, dim);
+        if (fabs((*p)->v.first[dim % N] - key[dim % N]) < min_dist || knn.size() < k){ //agregar también si faltan nodos para k
+          knn_queryR(key, k, (*p)->children[!dir], knn, min_dist, dim+1);
     }
    
    }

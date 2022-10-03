@@ -1,0 +1,10 @@
+^D:\GIULIA\UNIV\VI SEM\ESTRUCTURAS DE DATOS AVANZADAS\KD-TREE\EDA-KD_TREE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE" "-BD:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build" --check-stamp-file "D:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

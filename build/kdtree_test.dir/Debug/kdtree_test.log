@@ -1,0 +1,38 @@
+﻿  main.cpp
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(522,52): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(535,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(539,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(555,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(559,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(576,52): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(580,60): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(584,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(590,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(592,1): warning C4244: 'argumento': conversión de 'size_t' a 'double'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(231,24): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(225): message : al compilar la función del miembro clase plantilla "void KDTree<4,size_t>::knn_queryR(const Point<4> &,size_t,KDTree<4,size_t>::KDTNode *,std::priority_queue<std::pair<double,ElemType>,std::vector<std::pair<double,ElemType>,std::allocator<std::pair<double,ElemType>>>,std::less<_Ty>> &,int &,int) const"
+          with
+          [
+              ElemType=size_t,
+              _Ty=std::pair<double,size_t>
+          ]
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(218): message : Vea la referencia a la creación de una instancia de la función plantilla "void KDTree<4,size_t>::knn_queryR(const Point<4> &,size_t,KDTree<4,size_t>::KDTNode *,std::priority_queue<std::pair<double,ElemType>,std::vector<std::pair<double,ElemType>,std::allocator<std::pair<double,ElemType>>>,std::less<_Ty>> &,int &,int) const" que se está compilando
+          with
+          [
+              ElemType=size_t,
+              _Ty=std::pair<double,size_t>
+          ]
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(212): message : al compilar la función del miembro clase plantilla "std::vector<ElemType,std::allocator<ElemType>> KDTree<4,ElemType>::knn_query(const Point<4> &,size_t) const"
+          with
+          [
+              ElemType=size_t
+          ]
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(190): message : Vea la referencia a la creación de una instancia de la función plantilla "std::vector<ElemType,std::allocator<ElemType>> KDTree<4,ElemType>::knn_query(const Point<4> &,size_t) const" que se está compilando
+          with
+          [
+              ElemType=size_t
+          ]
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\KDTree.hpp(74): message : al compilar la función del miembro clase plantilla "KDTree<4,size_t>::KDTree(void)"
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(159): message : Vea la referencia a la creación de una instancia de la función plantilla "KDTree<4,size_t>::KDTree(void)" que se está compilando
+D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\src\main.cpp(159): message : Vea la referencia a la creación de una instancia de clase plantilla "KDTree<4,size_t>" que se está compilando
+  kdtree_test.vcxproj -> D:\giulia\Univ\VI Sem\Estructuras de datos avanzadas\kd-tree\EDA-KD_TREE\build\Debug\kdtree_test.exe

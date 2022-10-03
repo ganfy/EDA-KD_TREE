@@ -1,0 +1,10 @@
+^D:\GIULIA\UNIV\VI SEM\ESTRUCTURAS DE DATOS AVANZADAS\KD-TREE\EDA-KD_TREE\BUILD\CMAKEFILES\47477DB6B9BD4E234C5077DF18C7B8D6\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE" "-BD:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/giulia/Univ/VI Sem/Estructuras de datos avanzadas/kd-tree/EDA-KD_TREE/build/KDTree.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
