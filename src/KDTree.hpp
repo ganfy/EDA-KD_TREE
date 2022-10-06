@@ -79,7 +79,7 @@ KDTree<N, ElemType>::KDTree() {
 
 template <size_t N, typename ElemType>
 KDTree<N, ElemType>::~KDTree() {
-    delete root;
+    delete root; // Los hijos tienen su delete
     size_ = 0;
 }
 
@@ -122,6 +122,7 @@ bool KDTree<N, ElemType>::empty() const {
 
 template <size_t N, typename ElemType>
 typename KDTree<N, ElemType>::KDTNode*const* KDTree<N, ElemType>::find(const Point<N>& pt) const {
+    // busca el nodo donde debería estar, devuelve un booleano, pero también mueve un puntero hacia dónde debería ponerse el nodo
     int d = 0;
     auto p = &root;
     for (;
@@ -135,7 +136,7 @@ typename KDTree<N, ElemType>::KDTNode*const* KDTree<N, ElemType>::find(const Poi
 template <size_t N, typename ElemType>
 bool KDTree<N, ElemType>::contains(const Point<N> &pt) const {
     auto f = find(pt);
-    return *f!=0;
+    return (* f) != 0;
 }
 
 template <size_t N, typename ElemType>
@@ -162,9 +163,12 @@ void KDTree<N, ElemType>::insert(const Point<N> &pt, const ElemType &value) {
 template <size_t N, typename ElemType>
 ElemType &KDTree<N, ElemType>::operator[](const Point<N> &pt) {
     auto f = find(pt);
-    if (*f==0){
+    if ((*f) == NULL){
         ElemType e;
-        insert(pt, e);
+        //insert(pt, e); //vuelve a buscar
+        std::pair< Point<N>, ElemType> aux = { pt, e };
+        const_cast<KDTNode*>(*f) = new KDTNode(aux);
+        size_++;
     }
     return (*f)->v.second;
 }
@@ -193,15 +197,16 @@ ElemType KDTree<N, ElemType>::knn_value(const Point<N> &key, size_t k) const {
     int max = 0;
     ElemType elem = v[0];
     int cuenta = 0;
-    for (int i = 1; i < v.size(); i++) {
+    //TO DO:arreglar búsqueda más repetido 
+    for (int i = 0; i < v.size()-1; i++) {
         //std::cout << v[i] << " " << k << std::endl;
-        if (v[i] == v[i - 1])
+        if (v[i] == v[i + 1])
             cuenta++;
         else
             cuenta = 1;
         if (cuenta > max) {
             max = cuenta;
-            elem = v[i - 1];
+            elem = v[i + 1];
         }
     }
     new_element = elem;
